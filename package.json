@@ -1,0 +1,30 @@
+{
+  "name": "generating-document",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": "index.js",
+  "pkg": {
+    "targets": [
+      "node14-win-x64"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "docxtemplater": "^3.28.2",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "formidable": "^2.0.1",
+    "inquirer": "^8.2.0",
+    "inquirer-file": "^1.0.1",
+    "lodash": "^4.17.21",
+    "open": "^8.4.0",
+    "pizzip": "^3.1.1"
+  }
+}

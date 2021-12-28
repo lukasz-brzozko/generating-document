@@ -1,0 +1,9 @@
+<form action="/file/tags" method="post">
+
+  {{#each tags}}
+    <label for="{{this}}">{{this}}</label>
+    <input type="text" id="{{this}}" name="{{this}}" />
+  {{/each}}
+
+  <input type="submit" />
+</form>
