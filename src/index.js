@@ -1,13 +1,16 @@
+import handleInputTag from "./handleInputTag";
+
+import "./style.css";
+
 const init = () => {
-  const submitBtn = document.getElementById("submit-btn");
   const inputFile = document.getElementById("file");
+
+  const submitBtn = document.querySelector(".submit-btn");
 
   if (submitBtn === null || inputFile === null) return;
 
   inputFile.addEventListener("change", (e) => {
     const value = e.currentTarget.value;
-
-    console.log(value);
 
     value === ""
       ? submitBtn.setAttribute("disabled", true)
@@ -15,4 +18,7 @@ const init = () => {
   });
 };
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+  handleInputTag();
+});

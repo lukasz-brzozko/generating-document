@@ -13,7 +13,7 @@ const app = express();
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "dist")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -27,9 +27,9 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-// app.get("*", (req, res) => {
-//   res.redirect("/");
-// });
+app.get("*", (req, res) => {
+  res.redirect("/");
+});
 
 app.post("/file", (req, res, next) => {
   const form = formidable();
