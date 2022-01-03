@@ -1,5 +1,6 @@
 node_modules
-templates
-output
+/templates/*
+/output/*
 *.exe
 *.docx
+*.pdf

@@ -1,9 +1,10 @@
-<form action="/file/tags" method="post">
+<form action="/file/docx" method="post">
 
   {{#each tags}}
     <label for="{{this}}">{{this}}</label>
     <input type="text" id="{{this}}" name="{{this}}" />
   {{/each}}
 
-  <input type="submit" />
+  <button type="submit">docx</button>
+  <button type="submit" formaction="/file/pdf">pdf</button>
 </form>
