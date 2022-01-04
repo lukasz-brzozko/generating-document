@@ -1,8 +1,8 @@
-import "materialize-css/dist/js/materialize";
-import "materialize-css/dist/css/materialize.css";
+import "materialize-css/dist/js/materialize.min.js";
 
 import handleInputTag from "./handleInputTag";
 
+import "materialize-css/dist/css/materialize.min.css";
 import "./style.css";
 
 const init = () => {

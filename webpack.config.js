@@ -10,7 +10,7 @@ const stylesHandler = isProduction
   : "style-loader";
 
 const config = {
-  entry: "./public/index.js",
+  entry: "./public/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
   },
