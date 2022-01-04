@@ -48,7 +48,9 @@ app.post("/file", (req, res, next) => {
   const tags = getTags(filePath);
 
   if (tags.length === 0)
-    return res.render("error", { title: "Nie znaleziono żadnych tagów" });
+    return res.render("error", {
+      title: `Nie znaleziono żadnych znaczników w wybranym dokumencie. Każdy znacznik składa się z klamry otwierającej, nazwy znaczenika oraz klamry zamykającej, np. {adres_witryny}`,
+    });
 
   res.render("file", { tags });
 });

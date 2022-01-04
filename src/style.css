@@ -1,16 +1,13 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  max-width: 1280px;
-  margin: 0 auto;
-}
 
 .container {
-  margin-top: 100px;
+  max-width: 1280px;
+  margin: 100px auto 0;
 }
 
 .form__input-container {
@@ -28,3 +25,16 @@ body {
 .form__label {
   width: 100px;
 }
+
+.template-input {
+  display: none;
+}
+.template-input__label {
+  display: block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.template-input:checked + .template-input__label {
+  background-color: lightgray;
+} */

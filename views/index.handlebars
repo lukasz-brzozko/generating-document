@@ -1,18 +1,52 @@
-<h1>Generator</h1>
+<div class="row">
+  <div class="col s12">
+    <h3>Wybierz plik dokumentu</h3>
+  </div>
+</div>
 
-<form action="/file" method="post">
+<div class="row">
+  <div class="col s12">
+    <form class="form" action="/file" method="post">
+    <div class="row">
+      <div class="form__input-container col s12">
 
-  {{#each templateFiles as |template|}}
-    <input type="radio" name="file" id="{{@index}}" value="{{path}}" />
-    <label for="{{@index}}">{{name}}</label>
-  {{/each}}
+        {{#each templateFiles as |template|}}
+            <p>
+            <label class="template-input__label" for="{{@index}}">
+              <input
+                class="template-input with-gap"
+                type="radio"
+                name="file"
+                id="{{@index}}"
+                value="{{path}}"
+              />
+              <span>{{name}}</span>
+            </label>
+            </p>
+        {{/each}}
+      </div></div>
+      </div>
 
-  {{#if templateFiles}}
-    <button class="submit-btn" type="submit">
-      Przejdź dalej
-    </button>
-  {{/if}}
-  {{#unless templateFiles}}
-    <h2>Nie znaleziono żadnych plików z rozszerzeniem docx w folderu templates.</h2>
-  {{/unless}}
-</form>
+      {{#if templateFiles}}
+        <div class="row">
+          <div class="col s12">
+            <button
+              class="submit-btn waves-effect waves-light btn"
+              type="submit"
+              disabled="true"
+            >
+              Przejdź dalej
+            </button>
+          </div>
+        </div>
+      {{/if}}
+      {{#unless templateFiles}}
+        <h5 class="red-text text-darken-3">Nie znaleziono żadnych plików z
+          rozszerzeniem
+          <strong>docx</strong>
+          w folderze
+          <strong>templates</strong>.</h5>
+      {{/unless}}
+    </form>
+  </div>
+</div>
