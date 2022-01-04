@@ -35,7 +35,7 @@ const render = (inputFilePath, params) => {
   const buf = doc.getZip().generate({ type: "nodebuffer" });
 
   const outputFilePath = path.resolve(
-    __dirname,
+    process.cwd(),
     "output",
     path.basename(inputFilePath)
   );

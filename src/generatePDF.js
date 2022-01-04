@@ -8,7 +8,7 @@ async function generatePDF(filePath) {
   const ext = ".pdf";
   const inputPath = filePath;
   const fileName = path.parse(filePath).name;
-  const outputPath = path.join(__dirname, `/output/${fileName}${ext}`);
+  const outputPath = path.resolve(process.cwd(), "output", `${fileName}${ext}`);
 
   // Read file
   const docxBuf = await fs.readFile(inputPath);

@@ -7,11 +7,9 @@
 <div class="row">
   <div class="col s12">
     <form class="form" action="/file" method="post">
-    <div class="row">
-      <div class="form__input-container col s12">
-
+      <div class="form__input-container row">
         {{#each templateFiles as |template|}}
-            <p>
+            <p class="col s12">
             <label class="template-input__label" for="{{@index}}">
               <input
                 class="template-input with-gap"
@@ -24,7 +22,7 @@
             </label>
             </p>
         {{/each}}
-      </div></div>
+      </div>
       </div>
 
       {{#if templateFiles}}

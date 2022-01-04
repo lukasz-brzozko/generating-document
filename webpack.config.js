@@ -10,7 +10,7 @@ const stylesHandler = isProduction
   : "style-loader";
 
 const config = {
-  entry: "./src/index.js",
+  entry: "./public/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -39,7 +39,7 @@ module.exports = () => {
   if (isProduction) {
     config.mode = "production";
 
-    config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new MiniCssExtractPlugin({ filename: "style.css" }));
   } else {
     config.mode = "development";
   }
