@@ -1,11 +1,18 @@
 <h1>Generator</h1>
-<h2>{{inputs}}</h2>
 
-<form action="/file" method="post" enctype="multipart/form-data">
+<form action="/file" method="post">
 
-  <input type="file" accept=".docx" name="file" id="file" />
+  {{#each templateFiles as |template|}}
+    <input type="radio" name="file" id="{{@index}}" value="{{path}}" />
+    <label for="{{@index}}">{{name}}</label>
+  {{/each}}
 
-  <button class="submit-btn" type="submit" disabled="true">
-    Wyślij
-  </button>
+  {{#if templateFiles}}
+    <button class="submit-btn" type="submit">
+      Przejdź dalej
+    </button>
+  {{/if}}
+  {{#unless templateFiles}}
+    <h2>Nie znaleziono żadnych plików z rozszerzeniem docx w folderu templates.</h2>
+  {{/unless}}
 </form>

@@ -1,3 +1,4 @@
+var glob = require("glob");
 const path = require("path");
 const express = require("express");
 const { engine } = require("express-handlebars");
@@ -7,7 +8,6 @@ const bodyParser = require("body-parser");
 
 const { render, getTags } = require("./generateDocument");
 const { generatePDF } = require("./generatePDF");
-const { param } = require("express/lib/request");
 
 const app = express();
 app.engine("handlebars", engine());
@@ -24,7 +24,17 @@ const url = `${baseUrl}:${port}`;
 let filePath = null;
 
 app.get("/", (req, res) => {
-  res.render("index");
+  let templateFiles = [];
+  glob("./templates/*.docx", {}, function (er, files) {
+    templateFiles = files.map((element) => {
+      templateFiles.push({
+        name: path.basename(element),
+        path: element,
+      });
+    });
+  });
+
+  res.render("index", { templateFiles });
 });
 
 app.get("*", (req, res) => {
@@ -32,31 +42,15 @@ app.get("*", (req, res) => {
 });
 
 app.post("/file", (req, res, next) => {
-  const form = formidable();
+  const { file } = req.body;
+  filePath = file;
 
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      next(err);
-      return;
-    }
-  });
+  const tags = getTags(filePath);
 
-  form.on("fileBegin", (name, file) => {
-    filePath = `./templates/${file.originalFilename}`;
-    file.filepath = filePath;
-  });
+  if (tags.length === 0)
+    return res.render("error", { title: "Nie znaleziono żadnych tagów" });
 
-  form.on("file", (name, file) => {
-    if (file.originalFilename === "")
-      return res.render("error", { title: "Nie znaleziono żadnych tagów" });
-
-    const tags = getTags(filePath);
-
-    if (tags.length === 0)
-      return res.render("error", { title: "Nie znaleziono żadnych tagów" });
-
-    res.render("file", { tags });
-  });
+  res.render("file", { tags });
 });
 
 app.post("/file/docx", (req, res) => {
