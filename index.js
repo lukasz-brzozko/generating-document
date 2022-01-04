@@ -2,7 +2,6 @@ var glob = require("glob");
 const path = require("path");
 const express = require("express");
 const { engine } = require("express-handlebars");
-const formidable = require("formidable");
 const open = require("open");
 const bodyParser = require("body-parser");
 
