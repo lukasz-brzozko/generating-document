@@ -1,11 +1,50 @@
-<h1>heheh</h1>
-<h2>{{inputs}}</h2>
+<div class="row">
+  <div class="col s12">
+    <h3>Wybierz plik dokumentu</h3>
+  </div>
+</div>
 
-<form action="/file" method="post" enctype="multipart/form-data">
+<div class="row">
+  <div class="col s12">
+    <form class="form" action="/file" method="post">
+      <div class="form__input-container row">
+        {{#each templateFiles as |template|}}
+            <p class="col s12">
+            <label class="template-input__label" for="{{@index}}">
+              <input
+                class="template-input with-gap"
+                type="radio"
+                name="file"
+                id="{{@index}}"
+                value="{{path}}"
+              />
+              <span>{{name}}</span>
+            </label>
+            </p>
+        {{/each}}
+      </div>
+      </div>
 
-  <input type="file" accept=".docx" name="file" id="file" />
-
-  <button type="submit">
-    Wyślij
-  </button>
-</form>
+      {{#if templateFiles}}
+        <div class="row">
+          <div class="col s12">
+            <button
+              class="submit-btn waves-effect waves-light btn"
+              type="submit"
+              disabled="true"
+            >
+              Przejdź dalej
+            </button>
+          </div>
+        </div>
+      {{/if}}
+      {{#unless templateFiles}}
+        <h5 class="red-text text-darken-3">Nie znaleziono żadnych plików z
+          rozszerzeniem
+          <strong>docx</strong>
+          w folderze
+          <strong>templates</strong>.</h5>
+      {{/unless}}
+    </form>
+  </div>
+</div>

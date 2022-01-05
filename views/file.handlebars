@@ -1,9 +1,52 @@
-<form action="/file/tags" method="post">
+<div class="row">
+  <div class="col s12">
+    <h3>Uzupełnij treść znaczników</h3>
+  </div>
+</div>
 
-  {{#each tags}}
-    <label for="{{this}}">{{this}}</label>
-    <input type="text" id="{{this}}" name="{{this}}" />
-  {{/each}}
+<div class="row">
+  <form id="tag-form" class="form col s12" action="/file/docx" method="post">
+    <div class="row">
+      {{#each tags}}
 
-  <input type="submit" />
-</form>
+        <div class="form__input-wrapper input-field col s12 l4">
+          <input
+            type="text"
+            class="form__input tag-input"
+            id="{{this}}"
+            name="{{this}}"
+          />
+          <label class="form__label" for="{{this}}">{{this}}</label>
+        </div>
+      {{/each}}
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <h5>Generuj i pobierz</h5>
+        <button
+          class="form__btn form__btn--submit submit-btn waves-effect waves-light btn blue"
+          type="submit"
+          disabled="true"
+        >docx</button>
+        <button
+          class="form__btn form__btn--submit submit-btn waves-effect waves-light btn red darken-1"
+          type="submit"
+          formaction="/file/pdf"
+          disabled="true"
+        >pdf</button>
+      </div>
+    </div>
+    {{! <div class="row">
+      <div class="col s12 l2">
+        <div class="progress hidden">
+          <div class="indeterminate"></div>
+        </div>
+      </div>
+    </div> }}
+  </form>
+</div>
+<div class="row">
+  <div class="col s12">
+    <a href="/" class="waves-effect waves-light btn">Powrót</a>
+  </div>
+</div>
