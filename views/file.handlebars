@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col s12">
-    <h3>Uzupełnij treść znaczników</h3>
+    <h3>Uzupełnij treść znaczników pliku
+      <span id="filename">{{filename}}</span></h3>
   </div>
 </div>
 
@@ -26,6 +27,7 @@
         <button
           class="form__btn form__btn--submit submit-btn waves-effect waves-light btn blue"
           type="submit"
+          formaction="/file/docx"
           disabled="true"
         >docx</button>
         <button
@@ -36,13 +38,16 @@
         >pdf</button>
       </div>
     </div>
-    {{! <div class="row">
+
+    {{! Loader }}
+    <div class="row">
       <div class="col s12 l2">
-        <div class="progress hidden">
+        <div id="progress" class="progress hidden">
           <div class="indeterminate"></div>
         </div>
       </div>
-    </div> }}
+    </div>
+
   </form>
 </div>
 <div class="row">
