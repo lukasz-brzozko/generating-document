@@ -13,6 +13,12 @@ Instalacja wymaganych zależności projektu odbywa się z wykorzystaniem npm pop
 npm install
 ```
 
+Następnie należy wykonać komendę:
+
+```bash
+npm run build
+```
+
 ## Możliwe błędy
 
 Podczas próby generowania dokumentu może wystąpić następujący błąd :
