@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const { generatePDF } = require("../src/generatePDF");
 const { getTags, render } = require("../src/generateDocument");
@@ -20,7 +21,7 @@ router.post("/", (req, res, next) => {
       Każdy znacznik składa się z klamry otwierającej, nazwy znacznika oraz klamry zamykającej, np. <strong>{adres_witryny}</strong>`,
     });
 
-  res.render("file", { tags });
+  res.render("file", { tags, filename: path.parse(file).name });
 });
 
 router.post("/docx", (req, res) => {
