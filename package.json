@@ -19,7 +19,8 @@
       "dist/**/*"
     ],
     "targets": [
-      "node14-win-x64"
+      "node14-win-x64",
+      "node14-macos-x64"
     ]
   },
   "dependencies": {
