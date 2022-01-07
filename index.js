@@ -21,8 +21,8 @@ app.use(express.static(path.join(__dirname, "dist")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/", indexRouter);
 app.use("/file", fileRouter);
+app.use("/", indexRouter);
 
 app.listen(port, () => {
   console.log(`Aplikacja uruchomiona pod adresem ${url}`);

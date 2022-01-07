@@ -1,5 +1,7 @@
 import download from "downloadjs";
+const docx = require("docx-preview");
 
+console.log(docx);
 const handleInputTag = () => {
   const inputs = [...document.querySelectorAll(".tag-input")];
   const submitBtns = document.querySelectorAll(".submit-btn");
@@ -9,6 +11,17 @@ const handleInputTag = () => {
   const filename = document.getElementById("filename");
 
   if (inputs.length === 0) return;
+
+  // move to function
+  fetch("/file/preview")
+    .then((resp) => resp.blob())
+    .then((blob) => {
+      docx
+        .renderAsync(blob, document.getElementById("container"), undefined, {
+          inWrapper: false,
+        })
+        .then((x) => console.log("docx: finished"));
+    });
 
   const toggleButtons = (force = false) => {
     submitBtns.forEach((btn) => {

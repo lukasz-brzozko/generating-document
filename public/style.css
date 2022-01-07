@@ -5,3 +5,22 @@
 .hidden {
   visibility: hidden;
 }
+
+#container {
+  height: 200px;
+  resize: vertical;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* .docx-wrapper {
+  height: 200px;
+  max-width: 100%;
+  resize: vertical;
+}
+
+.docx-wrapper,
+section.docx {
+  overflow: auto !important;
+} */

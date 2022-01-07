@@ -24,6 +24,14 @@ router.post("/", (req, res, next) => {
   res.render("file", { tags, filename: path.parse(file).name });
 });
 
+// change to post
+
+router.get("/preview", (req, res, next) => {
+  res.sendFile(
+    path.resolve(process.cwd(), "templates", path.basename(filePath))
+  );
+});
+
 router.post("/docx", (req, res) => {
   const params = req.body;
 
