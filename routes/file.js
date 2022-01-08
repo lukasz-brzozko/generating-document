@@ -1,3 +1,4 @@
+const commandExists = require("command-exists");
 const express = require("express");
 const path = require("path");
 
@@ -24,11 +25,11 @@ router.post("/", (req, res, next) => {
   res.render("file", { tags, filename: path.parse(file).name });
 });
 
-// change to post
+router.post("/preview", (req, res, next) => {
+  const { filename } = req.body;
 
-router.get("/preview", (req, res, next) => {
   res.sendFile(
-    path.resolve(process.cwd(), "templates", path.basename(filePath))
+    path.resolve(process.cwd(), "templates", path.basename(filename))
   );
 });
 

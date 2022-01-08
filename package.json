@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.1",
+    "command-exists": "^1.2.9",
     "docx-preview": "^0.1.8",
     "docxtemplater": "^3.28.2",
     "downloadjs": "^1.4.7",

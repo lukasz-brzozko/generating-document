@@ -8,7 +8,7 @@ import "./style.css";
 const init = () => {
   const templateInputs = document.querySelectorAll(".template-input");
 
-  const submitBtn = document.querySelector(".submit-btn");
+  const submitBtn = document.querySelector(".btn-submit");
 
   if (submitBtn === null || templateInputs === null) return;
 
