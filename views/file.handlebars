@@ -4,7 +4,6 @@
       <strong id="filename">{{filename}}</strong></h3>
   </div>
 </div>
-
 <div class="row">
   <div class="col s12">
     <p>
@@ -21,19 +20,38 @@
 
 <div class="row">
   <form id="tag-form" class="form col s12" action="/file/docx" method="post">
+
     <div class="row">
       {{#each tags}}
+        <div class="col s12 m6 xl4">
+  <div class="row">
+        <div class="form__input-wrapper input-field col s10 xl10">
+          {{#if (isSpecialInput this)}}
 
-        <div class="form__input-wrapper input-field col s10 l3">
-          <input
-            type="text"
-            class="form__input tag-input"
-            id="{{this}}"
-            name="{{this}}"
-          />
+            <input
+              type="text"
+              class="form__input tag-input"
+              id="{{this}}"
+              name="{{this}}"
+            {{#if (hasDefaultValue this)}}
+              value="{{hasDefaultValue this}}"
+            {{/if}}
+            {{#if (isChoosingType this)}}
+              data-choose-group-id="{{isChoosingType this}}"
+            {{/if}}
+            />
+
+          {{else}}
+            <input
+              type="text"
+              class="form__input tag-input"
+              id="{{this}}"
+              name="{{this}}"
+            />
+          {{/if}}
           <label class="form__label" for="{{this}}">{{this}}</label>
         </div>
-        <div class="col s2 l1 btn-search__wrapper">
+        <div class="col s2 xl2 btn-search__wrapper">
           <button
             class="btn-search btn-floating btn-small white tooltipped"
             data-name="{{this}}"
@@ -64,8 +82,18 @@
 
           </button>
         </div>
+         </div>
+    </div>
+        {{!-- {{#if (shouldAddContainer @index)}}
+          <div class="col s12" style="display: grid; grid-template-rows: repeat(2, 80px); grid-template-column: repeat(2, 80px);">
+
+            dupa
+          </div>
+        {{/if}} --}}
+
       {{/each}}
     </div>
+
     <div class="row">
       <div class="col s12">
         <h5>Generuj i pobierz</h5>

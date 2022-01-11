@@ -49,6 +49,32 @@ mark {
   background-color: yellow;
 }
 
+.form__label {
+  overflow: auto;
+  right: 0.75rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.form__label::-webkit-scrollbar {
+  display: none;
+}
+
+.form__input,
+.form__label {
+  transition-property: all !important;
+}
+
+.form__input:disabled,
+.form__input:disabled + label {
+  opacity: 0.5 !important;
+}
+
+/* .form__input-wrapper {
+  margin-right: 0.75rem;
+  padding-right: 0 !important;
+} */
+
 /* .docx-wrapper {
   height: 200px;
   max-width: 100%;

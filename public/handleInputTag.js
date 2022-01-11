@@ -17,6 +17,8 @@ const handleInputTag = () => {
   const filename = document.getElementById("filename");
   const previewInput = document.getElementById("temaplate-prev-input");
 
+  const filledInputs = inputs.filter((input) => input.getAttribute("value"));
+
   const fetchTemplate = (filename) => {
     if (docxContainer.children.length > 0) return;
 
@@ -63,7 +65,7 @@ const handleInputTag = () => {
     setTimeout(() => {
       document
         .getElementById("highlighted-text")
-        .scrollIntoView({ behavior: "smooth", block: "center" });
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, delay);
   };
 
@@ -74,8 +76,28 @@ const handleInputTag = () => {
   });
 
   inputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      const isFormFilled = inputs.every((input) => input.value !== "");
+    input.addEventListener("change", (e) => {
+      const { chooseGroupId } = e.target.dataset;
+      const { value } = e.target;
+
+      if (chooseGroupId !== undefined) {
+        const choosingInputs = inputs.filter(
+          (input) =>
+            input !== e.target && input.dataset.chooseGroupId === chooseGroupId
+        );
+
+        choosingInputs.forEach((input) => {
+          value === ""
+            ? input.toggleAttribute("disabled", false)
+            : input.toggleAttribute("disabled", true);
+        });
+      }
+
+      const isFormFilled = inputs.every((input) => {
+        if (input.disabled) return true;
+
+        return input.value !== "";
+      });
 
       isFormFilled ? toggleButtons(false) : toggleButtons(true);
     });
@@ -133,8 +155,8 @@ const handleInputTag = () => {
 
       docxContainerContent = docxContainerContent.replaceAll("</mark>", "");
       docxContainerContent = docxContainerContent.replaceAll(
-        tagName,
-        `<mark id="highlighted-text">${tagName}</mark>`
+        `${tagName}}`,
+        `<mark id="highlighted-text">${tagName}</mark>}`
       );
 
       docxContainer.innerHTML = docxContainerContent;
@@ -143,6 +165,19 @@ const handleInputTag = () => {
 
       scrollToText(delay);
     });
+  });
+
+  filledInputs.forEach((input) => {
+    const { chooseGroupId } = input.dataset;
+    if (chooseGroupId === undefined) return;
+
+    const inputsWithTheSameGroup = inputs.filter(
+      (el) => el !== input && el.dataset.chooseGroupId === chooseGroupId
+    );
+
+    inputsWithTheSameGroup.forEach((input) =>
+      input.toggleAttribute("disabled", true)
+    );
   });
 
   fetchTemplate(filename.textContent);

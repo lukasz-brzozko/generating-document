@@ -1,4 +1,3 @@
-const commandExists = require("command-exists");
 const express = require("express");
 const path = require("path");
 

@@ -7,6 +7,8 @@ const path = require("path");
 const indexRouter = require("./routes/index");
 const fileRouter = require("./routes/file");
 
+require("./src/handlebarsHelpers");
+
 const baseUrl = "http://localhost";
 const port = 3000;
 const url = `${baseUrl}:${port}`;
