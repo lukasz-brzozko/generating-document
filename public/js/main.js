@@ -3,7 +3,7 @@ import "materialize-css/dist/js/materialize.min.js";
 import handleInputTag from "./handleInputTag";
 
 import "materialize-css/dist/css/materialize.min.css";
-import "./style.css";
+import "../styles/style.scss";
 
 const init = () => {
   const templateInputs = document.querySelectorAll(".template-input");

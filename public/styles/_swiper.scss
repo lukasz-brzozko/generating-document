@@ -1,0 +1,15 @@
+:root {
+  --swiper-theme-color: #26a69a;
+}
+
+.swiper-pagination {
+  position: static !important;
+  width: fit-content !important;
+  margin: 0 20px;
+}
+
+.swiper-navigation-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

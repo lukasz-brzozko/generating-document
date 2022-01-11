@@ -33,5 +33,14 @@ Handlebars.registerHelper("isSpecialInput", (string) => {
 Handlebars.registerHelper("shouldAddContainer", (index) => {
   if (index === 0) return true;
 
-  return (index + 1) % 6 === 0;
+  return index % 6 === 0;
+});
+
+Handlebars.registerHelper("chunkArray", (array, size) => {
+  const chunks = [];
+  while (array.length) {
+    chunks.push(array.splice(0, size));
+  }
+
+  return chunks;
 });

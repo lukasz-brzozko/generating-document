@@ -4,6 +4,7 @@ import M from "materialize-css";
 const docx = require("docx-preview");
 
 import findText from "./findText";
+import handleSlider from "./handleSlider";
 
 const handleInputTag = () => {
   const inputs = [...document.querySelectorAll(".tag-input")];
@@ -19,6 +20,8 @@ const handleInputTag = () => {
   const progress = document.getElementById("progress");
   const filename = document.getElementById("filename");
   const previewInput = document.getElementById("temaplate-prev-input");
+  const nextStepBtn = document.getElementById("multi-step-next-btn");
+  const prevStepBtn = document.getElementById("multi-step-prev-btn");
 
   const filledInputs = inputs.filter((input) => input.getAttribute("value"));
 
@@ -165,6 +168,7 @@ const handleInputTag = () => {
   });
 
   fetchTemplate(filename.textContent);
+  handleSlider();
 };
 
 export default handleInputTag;

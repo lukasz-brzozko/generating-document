@@ -10,7 +10,7 @@ const stylesHandler = isProduction
   : "style-loader";
 
 const config = {
-  entry: "./public/main.js",
+  entry: "./public/js/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -20,6 +20,10 @@ const config = {
   ],
   module: {
     rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
       {
         test: /\.css$/i,
         use: [stylesHandler, "css-loader"],
