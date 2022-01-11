@@ -24,64 +24,73 @@
     <div class="row">
       {{#each tags}}
         <div class="col s12 m6 xl4">
-  <div class="row">
-        <div class="form__input-wrapper input-field col s10 xl10">
-          {{#if (isSpecialInput this)}}
+          <div class="row">
+            <div class="form__input-wrapper input-field col s10 xl10">
+              {{#if (isSpecialInput this)}}
 
-            <input
-              type="text"
-              class="form__input tag-input"
-              id="{{this}}"
-              name="{{this}}"
-            {{#if (hasDefaultValue this)}}
-              value="{{hasDefaultValue this}}"
-            {{/if}}
-            {{#if (isChoosingType this)}}
-              data-choose-group-id="{{isChoosingType this}}"
-            {{/if}}
-            />
+                <input
+                {{#if (isNumberType this)}}
+                  type="number"
+                  min="0"
+                {{else}}
+                  type="text"
+                {{/if}}
+                  class="form__input tag-input"
+                  id="{{this}}"
+                  name="{{this}}"
+                {{#if (hasDefaultValue this)}}
+                  value="{{hasDefaultValue this}}"
+                {{/if}}
+                {{#if (isChoosingType this)}}
+                  data-choose-group-id="{{isChoosingType this}}"
+                {{/if}}
+                {{#if (isRequired this)}}
+                required="true"
+                {{/if}}
+                />
 
-          {{else}}
-            <input
-              type="text"
-              class="form__input tag-input"
-              id="{{this}}"
-              name="{{this}}"
-            />
-          {{/if}}
-          <label class="form__label" for="{{this}}">{{this}}</label>
-        </div>
-        <div class="col s2 xl2 btn-search__wrapper">
-          <button
-            class="btn-search btn-floating btn-small white tooltipped"
-            data-name="{{this}}"
-            data-position="right"
-            data-tooltip="Znajdź w szablonie"
-            type="button"
-          >
-            <svg
-              class="search-icon"
-              enable-background="new 0 0 512 512"
-              height="512px"
-              version="1.1"
-              viewBox="0 0 512 512"
-              width="512px"
-              xml:space="preserve"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
-              <path
-                d="M228,68.67c-68.48,0-124,55.51-124,124c0,68.48,55.52,124,124,124c68.48,0,124-55.52,124-124   C352,124.18,296.48,68.67,228,68.67z M228,283.27c-50.04,0-90.6-40.569-90.6-90.6c0-50.04,40.56-90.6,90.6-90.6   s90.6,40.56,90.6,90.6C318.6,242.7,278.04,283.27,228,283.27z"
-                fill="#26a69a"
-              ></path>
-              <path
-                d="M392.791,414.308c6.094,9.157,4.118,21.283-4.391,26.944c-8.509,5.662-20.457,2.803-26.551-6.355    l-88.641-133.204c-6.094-9.158-4.118-21.283,4.391-26.944c8.51-5.662,20.458-2.803,26.552,6.355L392.791,414.308z"
-                fill="#26a69a"
-              ></path>
-            </svg>
+              {{else}}
+                <input
+                  type="text"
+                  class="form__input tag-input"
+                  id="{{this}}"
+                  name="{{this}}"
+                  required="true"
+                />
+              {{/if}}
+              <label class="form__label" for="{{this}}">{{this}}</label>
+            </div>
+            <div class="col s2 xl2 btn-search__wrapper">
+              <button
+                class="btn-search btn-floating btn-small white tooltipped"
+                data-name="{{this}}"
+                data-position="right"
+                data-tooltip="Znajdź w szablonie"
+                type="button"
+              >
+                <svg
+                  class="search-icon"
+                  enable-background="new 0 0 512 512"
+                  height="512px"
+                  version="1.1"
+                  viewBox="0 0 512 512"
+                  width="512px"
+                  xml:space="preserve"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <path
+                    d="M228,68.67c-68.48,0-124,55.51-124,124c0,68.48,55.52,124,124,124c68.48,0,124-55.52,124-124   C352,124.18,296.48,68.67,228,68.67z M228,283.27c-50.04,0-90.6-40.569-90.6-90.6c0-50.04,40.56-90.6,90.6-90.6   s90.6,40.56,90.6,90.6C318.6,242.7,278.04,283.27,228,283.27z"
+                    fill="#26a69a"
+                  ></path>
+                  <path
+                    d="M392.791,414.308c6.094,9.157,4.118,21.283-4.391,26.944c-8.509,5.662-20.457,2.803-26.551-6.355    l-88.641-133.204c-6.094-9.158-4.118-21.283,4.391-26.944c8.51-5.662,20.458-2.803,26.552,6.355L392.791,414.308z"
+                    fill="#26a69a"
+                  ></path>
+                </svg>
 
-          </button>
-        </div>
+              </button>
+            </div>
          </div>
     </div>
         {{!-- {{#if (shouldAddContainer @index)}}

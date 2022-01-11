@@ -1,6 +1,9 @@
 import download from "downloadjs";
 import M from "materialize-css";
+
 const docx = require("docx-preview");
+
+import findText from "./findText";
 
 const handleInputTag = () => {
   const inputs = [...document.querySelectorAll(".tag-input")];
@@ -61,11 +64,9 @@ const handleInputTag = () => {
     }, 300);
   };
 
-  const scrollToText = (delay) => {
+  const scrollToText = (tagName, delay) => {
     setTimeout(() => {
-      document
-        .getElementById("highlighted-text")
-        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      findText(`${tagName}}`);
     }, delay);
   };
 
@@ -93,10 +94,10 @@ const handleInputTag = () => {
         });
       }
 
-      const isFormFilled = inputs.every((input) => {
-        if (input.disabled) return true;
+      const isFormFilled = inputs.every(({ disabled, required, value }) => {
+        if (disabled || !required) return true;
 
-        return input.value !== "";
+        return value !== "";
       });
 
       isFormFilled ? toggleButtons(false) : toggleButtons(true);
@@ -143,27 +144,10 @@ const handleInputTag = () => {
       const containerTagName = docxContainer.dataset.name;
 
       if (tagName === containerTagName) {
-        return scrollToText(delay);
+        return scrollToText(tagName, delay);
       }
 
-      let docxContainerContent = docxContainer.innerHTML;
-
-      docxContainerContent = docxContainerContent.replaceAll(
-        '<mark id="highlighted-text">',
-        ""
-      );
-
-      docxContainerContent = docxContainerContent.replaceAll("</mark>", "");
-      docxContainerContent = docxContainerContent.replaceAll(
-        `${tagName}}`,
-        `<mark id="highlighted-text">${tagName}</mark>}`
-      );
-
-      docxContainer.innerHTML = docxContainerContent;
-
-      docxContainer.dataset.name = tagName;
-
-      scrollToText(delay);
+      scrollToText(tagName, delay);
     });
   });
 

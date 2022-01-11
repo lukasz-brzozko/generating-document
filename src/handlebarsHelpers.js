@@ -13,6 +13,16 @@ Handlebars.registerHelper("isChoosingType", (string) => {
     : false;
 });
 
+Handlebars.registerHelper("isNumberType", (string) => {
+  const indexOfSymbol = string.indexOf("$n");
+  return indexOfSymbol !== -1 ? true : false;
+});
+
+Handlebars.registerHelper("isRequired", (string) => {
+  const indexOfSymbol = string.indexOf("$o");
+  return indexOfSymbol !== -1 ? false : true;
+});
+
 Handlebars.registerHelper("isSpecialInput", (string) => {
   const regex = /(\$|=)/g;
   const indexOfSymbol = string.search(regex);
