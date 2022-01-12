@@ -18,6 +18,19 @@ export const handleChoosingInputs = (e, inputs) => {
   }
 };
 
+export const handleSubmitBtnAvailability = ({
+  btnClassToggle,
+  btn,
+  isFormFilled,
+}) => {
+  isFormFilled
+    ? btn.toggleAttribute("disabled", false)
+    : btn.toggleAttribute("disabled", true);
+  isFormFilled
+    ? btn.classList.remove(btnClassToggle)
+    : btn.classList.add(btnClassToggle);
+};
+
 export const checkFormFilling = (e, inputs, checkChoosingInputs) => {
   let isFormFilled = false;
 

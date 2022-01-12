@@ -49,7 +49,7 @@ const handleInputTag = () => {
 
   const toggleButtons = (force = false) => {
     submitBtns.forEach((btn) => {
-      btn.toggleAttribute("disabled", force);
+      // btn.toggleAttribute("disabled", force);
     });
   };
 

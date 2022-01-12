@@ -1,11 +1,27 @@
 import Swiper, { Navigation, Pagination } from "swiper";
 import "swiper/css";
 
-import { checkFormFilling, handleFormInputs } from "./checkFormFilling";
+import {
+  checkFormFilling,
+  handleFormInputs,
+  handleSubmitBtnAvailability,
+} from "./checkFormFilling";
 
 Swiper.use([Navigation, Pagination]);
 
 const handleSlider = () => {
+  const classToggle = "hidden";
+
+  const hideInactiveSlides = ({ activeIndex, slides }) => {
+    const inactiveSlides = slides.filter(
+      (slide) => slide !== slides[activeIndex]
+    );
+
+    inactiveSlides.forEach((slide) => {
+      slide.classList.add(classToggle);
+    });
+  };
+
   const swiper = new Swiper("#form-slider", {
     allowTouchMove: false,
     speed: 0,
@@ -19,29 +35,14 @@ const handleSlider = () => {
     },
 
     on: {
-      afterInit: (swiper) => {
-        const {
-          activeIndex,
-          slides,
-          navigation: { nextEl },
-        } = swiper;
-        const activeSlide = slides[activeIndex];
+      afterInit: ({ activeIndex, slides }) => {
+        hideInactiveSlides({ activeIndex, slides });
+      },
 
-        slides.forEach((slide, index) => {
-          const inputs = [...slide.querySelectorAll("input")];
+      slideChange: ({ activeIndex, slides }) => {
+        slides[activeIndex].classList.remove(classToggle);
 
-          const isStepFilled = handleFormInputs(inputs);
-
-          if (index === 0) {
-            const isFormFilled = checkFormFilling(undefined, inputs, false);
-            isFormFilled
-              ? nextEl.toggleAttribute("disabled", false)
-              : nextEl.toggleAttribute("disabled", true);
-            isFormFilled
-              ? nextEl.classList.remove("swiper-button-disabled")
-              : nextEl.classList.add("swiper-button-disabled");
-          }
-        });
+        hideInactiveSlides({ activeIndex, slides });
       },
     },
   });

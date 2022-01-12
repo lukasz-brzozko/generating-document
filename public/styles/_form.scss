@@ -3,6 +3,7 @@
   right: 0.75rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  pointer-events: none;
 }
 
 .form__label::-webkit-scrollbar {
