@@ -64,12 +64,10 @@
       {{/each}} --}}
       <div class="col s12">
         {{! <div class="form__step-container"> }}
-          {{! <div id="form-slider" class="keen-slider"> }}
             <div id="form-slider" class="swiper form-slider">
               <div class="swiper-wrapper">
 
                 {{#each (chunkArray tags 6)}}
-                {{! <div class="form__step-input-wrapper keen-slider__slide"> }}
                   <div class="form__step-input-wrapper swiper-slide">
                     <div class="row">
 
@@ -77,7 +75,7 @@
                       <div class="form__input-wrapper input-field col s10 xl3">
                         {{#if (isSpecialInput this)}}
 
-                        <input {{#if (isNumberType this)}} type="number" min="0" {{else}} type="text" {{/if}}
+                        <input {{#if (isNumberType this)}} type="number" min="0" {{else}}{{#if (isDateType this)}} type="date" {{else}} type="text"{{/if}}{{/if}}
                           class="form__input tag-input" id="{{this}}" name="{{this}}" {{#if (hasDefaultValue this)}}
                           value="{{hasDefaultValue this}}" {{/if}} {{#if (isChoosingType this)}}
                           data-choose-group-id="{{isChoosingType this}}" {{/if}} {{#if (isRequired this)}}
@@ -112,7 +110,8 @@
                 </div>
               
               </div>
-
+              
+            {{#if (isMultiStep tags 6)}}
               <div class="swiper-navigation-panel">
                 <button id="multi-step-prev-btn" class="btn" type="button">Cofnij
                 </button>
@@ -120,6 +119,7 @@
                 <button id="multi-step-next-btn" class="btn" type="button">Dalej
                 </button>
               </div>
+            {{/if}}
             </div>
 
           </div>

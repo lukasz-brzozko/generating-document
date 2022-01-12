@@ -1,3 +1,5 @@
+const chunkArray = require("./helpers/chunkArray");
+
 const Handlebars = require("handlebars");
 
 Handlebars.registerHelper("hasDefaultValue", (string) => {
@@ -15,6 +17,11 @@ Handlebars.registerHelper("isChoosingType", (string) => {
 
 Handlebars.registerHelper("isNumberType", (string) => {
   const indexOfSymbol = string.indexOf("$n");
+  return indexOfSymbol !== -1 ? true : false;
+});
+
+Handlebars.registerHelper("isDateType", (string) => {
+  const indexOfSymbol = string.indexOf("$d");
   return indexOfSymbol !== -1 ? true : false;
 });
 
@@ -37,10 +44,13 @@ Handlebars.registerHelper("shouldAddContainer", (index) => {
 });
 
 Handlebars.registerHelper("chunkArray", (array, size) => {
-  const chunks = [];
-  while (array.length) {
-    chunks.push(array.splice(0, size));
-  }
+  const chunks = chunkArray(array, size);
 
   return chunks;
+});
+
+Handlebars.registerHelper("isMultiStep", (array, size) => {
+  const chunks = chunkArray(array, size);
+
+  return chunks.length > 1;
 });

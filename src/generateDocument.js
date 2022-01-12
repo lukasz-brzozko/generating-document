@@ -29,9 +29,21 @@ const render = (inputFilePath, params) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-  // render the document
-  // (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+
+  const dateKeys = Object.keys(params).filter(
+    (key) => key.includes("$d") && params[key] !== ""
+  );
+
+  if (dateKeys.length > 0) {
+    dateKeys.forEach((key) => {
+      const value = params[key];
+      const formattedValue = new Date(value).toLocaleDateString();
+      params[key] = formattedValue;
+    });
+  }
+
   doc.render(params);
+
   const buf = doc.getZip().generate({ type: "nodebuffer" });
 
   const outputFilePath = path.resolve(
