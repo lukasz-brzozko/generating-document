@@ -1,5 +1,4 @@
 import download from "downloadjs";
-import M from "materialize-css";
 
 const docx = require("docx-preview");
 
@@ -10,7 +9,6 @@ const handleInputTag = () => {
   const inputs = [...document.querySelectorAll(".tag-input")];
   const submitBtns = document.querySelectorAll(".btn-submit");
   const searchBtns = document.querySelectorAll(".btn-search");
-  const tooltips = document.querySelectorAll(".tooltipped");
 
   if (inputs.length === 0) return;
 
@@ -127,10 +125,6 @@ const handleInputTag = () => {
         })
         .catch((err) => console.log(err));
     });
-  });
-
-  tooltips.forEach((tooltip) => {
-    M.Tooltip.init(tooltip);
   });
 
   searchBtns.forEach((btn) => {

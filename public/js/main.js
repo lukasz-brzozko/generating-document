@@ -1,6 +1,8 @@
 import "materialize-css/dist/js/materialize.min.js";
 
+import handleTooltips from "./handleTooltips";
 import handleInputTag from "./handleInputTag";
+import handleOpenFolderBtn from "./handleOpenFolderBtn";
 
 import "materialize-css/dist/css/materialize.min.css";
 import "../styles/style.scss";
@@ -24,5 +26,7 @@ const init = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   init();
+  handleTooltips();
   handleInputTag();
+  handleOpenFolderBtn();
 });

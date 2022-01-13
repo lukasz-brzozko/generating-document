@@ -27,6 +27,14 @@
   margin: 2rem 0 1rem;
 }
 
+.btn-open-folder {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 svg {
   width: 100%;
   height: 100%;
@@ -35,6 +43,12 @@ svg {
 .search-icon {
   width: 90%;
   height: 90%;
+}
+
+.folder-icon {
+  width: 24px;
+  flex-shrink: 0;
+  color: #26a69a;
 }
 
 mark {
