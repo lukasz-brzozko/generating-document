@@ -46,7 +46,11 @@
                         <input type="text" class="form__input tag-input" id="{{this}}" name="{{this}}"
                           required="true" />
                         {{/if}}
-                        <label class="form__label" for="{{this}}">{{this}}</label>
+                        <label class="form__label" for="{{this}}">
+                          <span class="form__label-text">
+                            {{this}}
+                          </span>
+                          </label>
                       </div>
                       <div class="col s2 xl1 btn-search__wrapper">
                         <button class="btn-search btn-floating btn-small white tooltipped" data-name="{{this}}"
