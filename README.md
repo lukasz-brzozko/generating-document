@@ -41,6 +41,14 @@ Ponadto, dostępne są następujące prefiksy znaczników:
 - `$d` - zwraca input typu date np. {$dName}
 - `$c{id}$` - zwraca input, którego wypełnienie spowoduje zablokowanie innego inputa o takim samym prefiksie np. uzupełnienie inputa {$c1$Name} zablokuje inputa o znaczniku {$c1$Address}
 
+## Plik wykonywalny
+
+Do utworzenia pliku wykonywalnego należy wykorzystać bibliotekę `pkg` następującą komendą:
+
+```bash
+npx pkg .
+```
+
 ## Możliwe błędy
 
 Podczas próby generowania dokumentu może wystąpić następujący błąd:
