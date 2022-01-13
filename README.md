@@ -29,6 +29,18 @@ npm start
 
 Aplikacja wyszukuje pliki z rozszerzeniem **docx**, znajdujące się w folderze **templates**. Następnie, po wybraniu jednego z nich, należy uzupełnić zawartość dostępnych znaczników. Uzupełniony dokument można wygenerować i pobrać w formacie docx oraz pdf.
 
+## Legenda
+
+Składnia znaczników jest tożsama z [docxtemplater](https://docxtemplater.com/docs/tag-types/)
+
+Ponadto, dostępne są następujące prefiksy znaczników:
+
+- bez prefiksu - zwraca standardowy input type text np. {Name}
+- `$o` - zwraca opcjonalny input np. {$oName}
+- `$n` - zwraca input typu number np. {$nName}
+- `$d` - zwraca input typu date np. {$dName}
+- `$c{id}$` - zwraca input, którego wypełnienie spowoduje zablokowanie innego inputa o takim samym prefiksie np. uzupełnienie inputa {$c1$Name} zablokuje inputa o znaczniku {$c1$Address}
+
 ## Możliwe błędy
 
 Podczas próby generowania dokumentu może wystąpić następujący błąd :
@@ -49,18 +61,6 @@ let command = `-env:UserInstallation=file://${installDir.name} --headless --conv
 
 let command = `${installDir.name} --headless --convert-to ${format}`;
 ```
-
-## Legenda
-
-Składnia znaczników: [docxtemplater](https://docxtemplater.com/docs/tag-types/)
-
-Ponadto, dostępne są następujące prefiksy znaczników:
-
-- bez prefiksu - zwraca standardowy input type text np. {Name}
-- `$o` - zwraca opcjonalny input np. {$oName}
-- `$n` - zwraca input typu number np. {$nName}
-- `$d` - zwraca input typu date np. {$dName}
-- `$c{id}$` - zwraca input, którego wypełnienie spowoduje zablokowanie innego inputa o takim samym prefiksie np. uzupełnienie inputa {$c1$Name} zablokuje inputa o znaczniku {$c1$Address}
 
 ## Licencja
 
