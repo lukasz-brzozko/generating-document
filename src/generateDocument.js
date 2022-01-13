@@ -5,6 +5,8 @@ const InspectModule = require("docxtemplater/js/inspect-module");
 const fs = require("fs");
 const path = require("path");
 
+const formatDate = require("./helpers/formatDate");
+
 const getTags = (filePath) => {
   const iModule = InspectModule();
 
@@ -29,9 +31,24 @@ const render = (inputFilePath, params) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-  // render the document
-  // (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+
+  const dateKeys = Object.keys(params).filter(
+    (key) => key.includes("$d") && params[key] !== ""
+  );
+
+  if (dateKeys.length > 0) {
+    dateKeys.forEach((key) => {
+      const value = params[key];
+      const date = new Date(value);
+
+      const formattedValue = formatDate(date);
+
+      params[key] = formattedValue;
+    });
+  }
+
   doc.render(params);
+
   const buf = doc.getZip().generate({ type: "nodebuffer" });
 
   const outputFilePath = path.resolve(

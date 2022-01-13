@@ -1,0 +1,12 @@
+.docx {
+  overflow: visible !important;
+}
+
+.docx-container {
+  height: 200px;
+  resize: vertical;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

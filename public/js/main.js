@@ -1,14 +1,16 @@
 import "materialize-css/dist/js/materialize.min.js";
 
+import handleTooltips from "./handleTooltips";
 import handleInputTag from "./handleInputTag";
+import handleOpenFolderBtn from "./handleOpenFolderBtn";
 
 import "materialize-css/dist/css/materialize.min.css";
-import "./style.css";
+import "../styles/style.scss";
 
 const init = () => {
   const templateInputs = document.querySelectorAll(".template-input");
 
-  const submitBtn = document.querySelector(".submit-btn");
+  const submitBtn = document.querySelector(".btn-submit");
 
   if (submitBtn === null || templateInputs === null) return;
 
@@ -24,5 +26,7 @@ const init = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   init();
+  handleTooltips();
   handleInputTag();
+  handleOpenFolderBtn();
 });

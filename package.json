@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.1",
+    "docx-preview": "^0.1.8",
     "docxtemplater": "^3.28.2",
     "downloadjs": "^1.4.7",
     "express": "^4.17.2",
@@ -34,7 +35,8 @@
     "lodash": "^4.17.21",
     "materialize-css": "^1.0.0",
     "open": "^8.4.0",
-    "pizzip": "^3.1.1"
+    "pizzip": "^3.1.1",
+    "swiper": "^7.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -44,7 +46,7 @@
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
-    "sass": "^1.45.2",
+    "sass": "^1.47.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
