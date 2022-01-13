@@ -13,7 +13,7 @@ Instalacja wymaganych zależności projektu odbywa się z wykorzystaniem npm pop
 npm install
 ```
 
-Aplikacja korzysta z plików w folderze dist. Przed pierwszym uruchomieniem należy wykonać komendę:
+Aplikacja wykorzystuje pliki, znajdujące się w folderze dist. Przed pierwszym uruchomieniem, należy wykonać komendę:
 
 ```bash
 npm run build
