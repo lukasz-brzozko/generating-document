@@ -5,6 +5,8 @@ const InspectModule = require("docxtemplater/js/inspect-module");
 const fs = require("fs");
 const path = require("path");
 
+const formatDate = require("./helpers/formatDate");
+
 const getTags = (filePath) => {
   const iModule = InspectModule();
 
@@ -37,7 +39,10 @@ const render = (inputFilePath, params) => {
   if (dateKeys.length > 0) {
     dateKeys.forEach((key) => {
       const value = params[key];
-      const formattedValue = new Date(value).toLocaleDateString();
+      const date = new Date(value);
+
+      const formattedValue = formatDate(date);
+
       params[key] = formattedValue;
     });
   }
