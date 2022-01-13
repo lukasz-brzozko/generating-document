@@ -25,6 +25,11 @@ Handlebars.registerHelper("isDateType", (string) => {
   return indexOfSymbol !== -1 ? true : false;
 });
 
+Handlebars.registerHelper("isLongType", (string) => {
+  const indexOfSymbol = string.indexOf("$l");
+  return indexOfSymbol !== -1 ? true : false;
+});
+
 Handlebars.registerHelper("isRequired", (string) => {
   const indexOfSymbol = string.indexOf("$o");
   return indexOfSymbol !== -1 ? false : true;

@@ -33,7 +33,7 @@
                     <div class="row">
 
                       {{#each this}}
-                      <div class="form__input-wrapper input-field col s10 xl3">
+                      <div class="form__input-wrapper input-field col s10 {{#if (isLongType this)}}xl11{{else}}xl3{{/if}}">
                         {{#if (isSpecialInput this)}}
 
                         <input {{#if (isNumberType this)}} type="number" min="0" {{else}}{{#if (isDateType this)}} type="date" {{else}} type="text"{{/if}}{{/if}}
