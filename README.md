@@ -43,7 +43,7 @@ Ponadto, dostępne są następujące prefiksy znaczników:
 
 ## Możliwe błędy
 
-Podczas próby generowania dokumentu może wystąpić następujący błąd :
+Podczas próby generowania dokumentu może wystąpić następujący błąd:
 
 > The application cannot be started.
 > The configuration file path/bootstrap.ini is corrupt.
